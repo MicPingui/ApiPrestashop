@@ -26,6 +26,7 @@ Route::get('/version', function(){
 });
 
 Route::get('/getAllWebPay', [PedidosController::class,'getAllWebPay']);
+Route::get('/getAllOrdersSyS', [PedidosController::class,'getAllOrdersSyS']);
 Route::get('/getAllOrders', [PedidosController::class,'getAllOrders']);
 Route::get('/getPrueba', [PedidosController::class,'getPrueba']);
 

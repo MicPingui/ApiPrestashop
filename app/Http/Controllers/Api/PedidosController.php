@@ -16,7 +16,7 @@ use Illuminate\Http\Request;
 
 class PedidosController extends Controller{
 
-    public function getAllOrders(Request $request){
+    public function getAllOrdersSyS(Request $request){
         $pedido = $request->input('id_order');
 
         if($pedido != null && $pedido != ""){
@@ -42,6 +42,30 @@ class PedidosController extends Controller{
         }
     }
 
+    public function getAllOrders(Request $request){
+        $pedido = $request->input('id_order');
+
+        if($pedido != null && $pedido != ""){
+            $lista = Orders::with(
+                                'customer',
+                                'webpay',
+                                'order_details',
+                                'state',
+                                'addresses'
+                            )->where('id_order','=',$pedido)->get();
+            return $lista;
+        }else{
+            $lista = Orders::with(
+                                    'customer',
+                                    'webpay',
+                                    'order_details',
+                                    'state',
+                                    'addresses'
+                            )->get();
+            return $lista;
+        }
+    }
+
 
 
     public function getAllWebPay(Request $request){
@@ -56,7 +80,7 @@ class PedidosController extends Controller{
     }
 
     public function getPrueba(){
-        $lista = CustomerMessage::all();
+        $lista = Address::all();
         return $lista;
     }
 
