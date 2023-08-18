@@ -37,7 +37,7 @@ class PedidosController extends Controller{
                                     'order_details:id_order_detail,id_order,product_id,product_quantity,total_price_tax_incl,unit_price_tax_incl,product_reference',
                                     'state:id_order_state,name,template',
                                     'addresses:id_address,id_customer,alias,company,firstname,lastname,city,address1,address2,phone,phone_mobile'
-                            )->get();
+                            )->where('current_state',3)->get();
             return $lista;
         }
     }
